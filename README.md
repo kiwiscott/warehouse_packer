@@ -11,7 +11,9 @@ https://www.erim.eur.nl/material-handling-forum/research-education/tools/calc-or
 
 
 ##the warehouse 
-Representing a warehouse is simply a matter or defining the rows and aisles as a graph. We'll use a simple 4X4 matrix (16 nodes) for most of our testing data. the depot represents the start point for order collection and the end point for order dump off -- imagine you out everything into a box there. 
+Representing a warehouse is simply a matter or defining the rows and aisles as a graph. We'll use a simple 4X4 matrix (16 nodes) for most of our testing data. the depot represents the start point for order collection and the end point for order dump off -- imagine you everything everything into a box there. 
+
+We can represent the Nodes (A,B,C,D....) and Vertices (A->B) in a simple data map with the number of steps between them as a weight. e.g. A->B:6, A->E:4. 
 
 ```
 A------B------C------D
