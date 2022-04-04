@@ -10,14 +10,13 @@ pub struct Layout {
 impl Layout {
     pub fn new(data:Vec<&str>) -> Layout {
         let v:Vec<Vertex> = data.into_iter().map(|d| {
-            let mut iter = d.split(":");
-
+            let mut iter = d.split(&[':','-','>'][..]);
             Vertex{
                 node_a: String::from(iter.next().unwrap()), 
                 node_b: String::from(iter.next().unwrap()), 
-                cost: iter.next().unwrap().parse::<u32>().unwrap()
+                cost: iter.last().unwrap().parse::<u32>().unwrap()
             }
-        }).collect(); 
+        }).collect();
 
         Layout {
             vertices: v
@@ -39,10 +38,10 @@ mod tests {
         assert_eq!(l.vertices[0].node_b, "b");
         assert_eq!(l.vertices[0].node_a, "a");
     }
-    
+
     #[test]
     fn full_data_parse() {
-        let v = vec!["a:b:6","b:c:3" ];         
+        let v = vec!["a->b:6","b->c:3" ];         
         let l = Layout::new(v);
         assert_eq!(l.vertices.len(), 2);
     }
